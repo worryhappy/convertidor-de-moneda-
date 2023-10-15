@@ -1,0 +1,24 @@
+<?php
+class ConversorMoneda {
+  private $tasaCambio;
+
+  public function __construct($tasaCambio) {
+    $this->tasaCambio = $tasaCambio;
+  }
+
+  public function convertir($montoEnOrigen, $monedaOrigen, $monedaDestino) {
+    if ($monedaOrigen == "Bolívares" && $monedaDestino == "Dólares") {
+      return $montoEnOrigen / $this->tasaCambio;
+    } elseif ($monedaOrigen == "Dólares" && $monedaDestino == "Bolívares") {
+      return $montoEnOrigen * $this->tasaCambio;
+    } else {
+      return "No se puede convertir entre esas monedas";
+    }
+  }
+}
+
+// Ejemplo de uso
+$conversor = new ConversorMoneda(1);
+echo $conversor->convertir(34.85, "Bolívares", "Dólares"); // Imprime: 1
+echo $conversor->convertir(1, "Dólares", "Bolívares"); // Imprime: 34.85
+?>
